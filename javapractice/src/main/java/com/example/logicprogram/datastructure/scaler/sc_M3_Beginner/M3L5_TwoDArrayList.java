@@ -1,5 +1,7 @@
 package com.example.logicprogram.datastructure.scaler.sc_M3_Beginner;
 
+import java.util.Arrays;
+
 public class M3L5_TwoDArrayList {
 
     /*
@@ -42,6 +44,14 @@ public class M3L5_TwoDArrayList {
          * For matrix multiplication we use 3 loops in general solution.
          * Can we reduce no. of for loops in matrix multiplication.
          * */
+
+        int[][] twoD = new int[3][3];
+        twoD[0] = new int[]{1, 2, 3};
+        twoD[1] = new int[]{4, 5, 6};
+        twoD[2] = new int[]{7, 8, 9};
+
+        System.out.println("args = " + twoD);
+        //getTransposeMatrix(twoD);
 
     }
 
@@ -96,7 +106,7 @@ public class M3L5_TwoDArrayList {
      *
      * */
 
-    public int[][] getTransposeMatrix(int[][] A) {
+    public static int[][] getTransposeMatrix(int[][] A) {
 
         int rowSizeA = A.length;
         int colSizeA = A[0].length;
@@ -119,7 +129,7 @@ public class M3L5_TwoDArrayList {
      * Problem Description :
      * */
 
-    public int[][] solveMatricsMultiplication(int[][] A, int[][] B) {
+    public int[][] solveMatrixMultiplication(int[][] A, int[][] B) {
 
         int rowCountA = A.length;
         int colCountA = A[0].length;

@@ -206,7 +206,7 @@ public class TestingReflection {
 
             String methodName = "getPrivate";
 
-            Method privateMethod = UFOEnemyShip.class.getDeclaredMethod(methodName, null);
+            Method privateMethod = UFOEnemyShip.class.getDeclaredMethod(methodName);
 
             // Shuts down security allowing you to access private methods
 
@@ -214,7 +214,7 @@ public class TestingReflection {
 
             // get the return value from the method
 
-            String privateReturnVal = (String) privateMethod.invoke(enemyshipPrivate, null);
+            String privateReturnVal = (String) privateMethod.invoke(enemyshipPrivate);
 
             System.out.println("EnemyShip Private Method: " + privateReturnVal);
 
@@ -226,7 +226,7 @@ public class TestingReflection {
 
             // Provide the parameters above with values
 
-            Object[] params = new Object[]{new Integer(10), new String("Random")};
+            Object[] params = new Object[]{Integer.valueOf(10), new String("Random")};
 
             // Get the method by providing its name and a Class array with parameters
 

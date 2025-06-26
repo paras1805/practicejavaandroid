@@ -25,6 +25,16 @@ import java.util.ArrayList;
 public class IntroProblemSolving {
 
     public static void main(String[] args) {
+
+        // 1) Find SquareRoot
+        findSquareRoot();
+        System.out.println();
+
+        // 2) CountFactors
+        System.out.println("countFactors = " + countFactors(10));
+
+        // Q2. IsPrime
+
         int count = optimiseFactors(6);
         System.out.println(count);
     }
@@ -32,7 +42,7 @@ public class IntroProblemSolving {
 
     // https://www.scaler.com/topics/square-root-in-java/
     // 1) Find square root of a number
-    public void findSquareRoot(int A) {
+    public static void findSquareRoot() {
 
         // The square of 3 is 9.0
         int X = 3;
@@ -68,7 +78,7 @@ public class IntroProblemSolving {
     * */
 
     // 2) Count factors of a number
-    public int countFactors(int A) {
+    public static int countFactors(int A) {
         ArrayList<Integer> factors = new ArrayList<Integer>();
         for(int i = 1; i<=A; i++){
             if(A % i == 0) {
@@ -95,10 +105,54 @@ public class IntroProblemSolving {
 
     /*
     * Iterate over all numbers from 1 to square root(N).
-For each number check if N % i == 0.
-If yes, then increment count by 1 if i * i == N or
-by 2 otherwise.
+        For each number check if N % i == 0.
+        If yes, then increment count by 1 if i * i == N or
+        by 2 otherwise.
     *
+    * */
+
+    // Lets suppose we have 10^18 iteration how much time it will take to calculate all factors ?
+    //
+    // Example - n = 100 factors
+    /*
+    *    i      |    n/i
+    * ---------------------
+    * p1 1      |    100    (i < n/i) -> take both factors i.e - count+2
+    *    2      |    50     (i < n/i) -> take both factors i.e - count+2
+    *    4      |    25     (i < n/i) -> take both factors i.e - count+2
+    *    5      |    20     (i < n/i) -> take both factors i.e - count+2
+    *    10     |    10     (i == n/i) -> take only one factor i.e - count++
+    * ----------------------
+    * p2 20     |    5
+    *    25     |    4
+    *    50     |    2
+    *    100    |    1
+    *
+    * For p2 factors are repeating, so we can avoid taking iterations for
+    * these factor values.
+    * We only have to iterate for p1.
+    * So how we can do this ?
+    * check the point when after P2 starts repeating :
+    *           i.e - when i <= n/i
+    *     or    i.e - i * i <= n
+    *     or    i.e - i <= sqrt(n)
+    * So we can iterate sqrt(n) times for p1 values.
+    *
+    *    i      |    n/i
+    * ---------------------
+    * p1 1      |    100    (i < n/i) -> take both factors i.e - count+2
+    *    2      |    50     (i < n/i) -> take both factors i.e - count+2
+    *    4      |    25     (i < n/i) -> take both factors i.e - count+2
+    *    5      |    20     (i < n/i) -> take both factors i.e - count+2
+    *    10     |    10     (i == n/i) -> take only one factor i.e - count++
+    *
+    * So, Time Complexity : O(sqrt(N))
+    *
+    * How is TLE improved ?
+    * Lets suppose 10^9 iteration takes 1 second to execute.
+    * We have 10^18 iteration how much time it will take to calculate all factors ?
+    *
+    * 10^18 * 1 second = 10^18 seconds =
     * */
 
     public static int optimiseFactors(int A) {

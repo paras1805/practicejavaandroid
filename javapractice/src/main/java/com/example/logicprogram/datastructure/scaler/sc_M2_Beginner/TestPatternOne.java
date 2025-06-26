@@ -2,11 +2,13 @@ package com.example.logicprogram.datastructure.scaler.sc_M2_Beginner;
 
 public class TestPatternOne {
 
-    // Inclusive Values
+    // Inclusive Values -  Boundary No. are included(rectangular brackets)
     // i -> [1, 10]
 
     // Exclusive values
     // i -> (1, 10]    ----------- here 1 is exclusive
+    // i.e -> (1, 10] => [2,10] => 2,3,4,5,6,7,8,9,10
+    // i.e -> (1, 10) => [2,9] => 2,3,4,5,6,7,8,9
 
     /*
      * Based on above we will create a simple logic (for N given range)

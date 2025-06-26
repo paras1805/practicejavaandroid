@@ -1,24 +1,59 @@
 package com.example.logicprogram.datastructure.scaler.sc_M5_Intermediate;
 
 
+import com.example.logicprogram.java_collection.Sorting_Comparamble_Comparator;
+import com.google.protobuf.Internal;
+
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Stream;
 
 public class M5L1_Sorting {
+
+    public static int[] bubbleSortt(int[] ar, String sortingOrder){
+
+        for(int i = 0; i<ar.length; i++){
+            for(int j=i+1; j<ar.length; j++){
+                if(ar[i]>ar[j]){
+                    int temp = ar[i];
+                    ar[i] = ar[j];
+                    ar[j] = temp;
+                }
+            }
+        }
+        return ar;
+    }
+
+
+
     public static void main(String[] args) {
 
         // Test Bubble Sort
         //int[] array = {21,23,34,32,1,3,8,2,5,9};
         int[] array = {1,3,8,2,5};
-        int[] arr = bubbleSort(array, "decr");
-        System.out.println("Decreasing Order");
-        for (int k : arr) {
+        //int[] arr = bubbleSort(array, "decr");
+        //int[] arr = bubbleSortt(array, "incr");
+
+        // Comparator
+        ArrayList<Integer> ar = new ArrayList<Integer>();
+        ar.add(1);
+        ar.add(3);
+        ar.add(8);
+        ar.add(2);
+        ar.add(5);
+        ar.sort(new MyComparator());
+
+        System.out.println("Increasing Order");
+        for (int k : ar) {
             System.out.println("Element : " + k);
         }
 
         // Test Minimum Cost : Element Removal
-        int[] ar = {8,0,10};
-        int minCost = elementRemoval(ar);
+        int[] arrr = {8,0,10};
+        int minCost = elementRemoval(arrr);
         System.out.println("\nminCost : " + minCost);
 
         // Test Novel Integer : For count value of greater number then P.
@@ -64,7 +99,9 @@ public class M5L1_Sorting {
             return "0";
         }
 
+        System.out.println("\nBefore custom sort : " + Arrays.toString(arr));
         Arrays.sort(arr, (a, b) -> customCompare(a, b));
+        System.out.println("After custom sort : " + Arrays.toString(arr));
 
         StringBuilder strBuilder = new StringBuilder();
         for (Integer integer : arr) {
@@ -310,6 +347,15 @@ public class M5L1_Sorting {
             }
         }
         return factors.size();
+    }
+
+    static class MyComparator implements Comparator<Integer>
+    {
+
+        @Override
+        public int compare(Integer a, Integer b) {
+            if(a<b) return -1; else return 1;
+        }
     }
 
 

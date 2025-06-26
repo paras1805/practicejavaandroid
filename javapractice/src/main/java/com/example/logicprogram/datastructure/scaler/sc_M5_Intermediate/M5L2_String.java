@@ -1,5 +1,7 @@
 package com.example.logicprogram.datastructure.scaler.sc_M5_Intermediate;
 
+import java.util.Arrays;
+
 public class M5L2_String {
 
 
@@ -23,4 +25,24 @@ public class M5L2_String {
     // Ques :  If middle element of palindrome is known, can you find the length id palindrome.
     // Idea 1 : for odd length -> take one middle element
     // Idea 2 : for even length -> take P1 and P2 mid elements.
+
+    public static void main(String[] args) {
+
+        char a = '9'; // ASCII 9 is 57
+        char ch = (char) (a + 8);  // 57+8 => 65 = A
+        System.out.println("ASCII = " + ch);
+
+
+        // Toggle every bit
+        String x = "aNaCoNdA";
+        System.out.println("Toggle Every Char -- " + toggleStringBit(x));
+    }
+
+    public static String toggleStringBit(String s){
+        char[] ch = s.toCharArray();
+        for (int i = 0; i < ch.length; i++) {
+            ch[i] = (char) (ch[i]^(1<<5));
+        }
+        return String.copyValueOf(ch);
+    }
 }
